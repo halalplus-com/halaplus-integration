@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Program Demo</title>
+    <!-- <script src="http://fat-img.halaladmin.vip/pub/halalsdk/halalSDK.js"></script> -->
+    <script src="http://fat-img.halaladmin.vip/pub/halalsdk/halalSDK.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 100vw;
+        }
+        #authCode, #TokenData{
+            word-break: break-all;
+        }
+    </style>
+  </head>
+
+  <body>
+    <h2>Mini Program Demo</h2>
+    <br/>
+    <p>getAuthCode response: <p id="authCode"></p></p>
+    <br/>
+    <p>token response: <p id="TokenData"></p></p>
+    <script>
+
+      window.halal.getAuthCode({
+        responseType: "code",
+        clientId: "test",
+        redirectUri: "https://fat-m.halaladmin.vip",
+        scope: "",
+        state: "",
+        deviceId: "",
+        appVersion: "",
+        codeChallenge: "",
+        codeChallengeMethod: "",
+      })
+      .then((response) => {
+        const { code } = response.data;
+        console.log("getAuthCode成功", response);
+        document.getElementById("authCode").innerText = JSON.stringify(response);
+        getToken(code); // 获取token
+      })
+      .catch((error) => {
+        console.error("getAuthCode错误", error);
+      });
+
+      // 获取token
+      const getToken = (code) => {
+        fetch(
+          "http://192.168.110.63:3000/api/user-account/oauth/v1/OauthService/Token",  // 根据需要改为实际的请求地址
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              grant_type: "authorization_code",
+              client_id: "test",
+              code: code,
+              redirect_uri: "https://fat-m.halaladmin.vip",
+            }),
+          }
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Token Response:", data);
+            document.getElementById("TokenData").innerText = JSON.stringify(data);
+          })
+          .catch((error) => {
+            console.error("Error fetching token:", error);
+          });
+      };
+    </script>
+  </body>
+</html>

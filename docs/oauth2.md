@@ -207,20 +207,26 @@ curl -X POST \
 
 获取 Access Token 后，您就可以调用我们受保护的API资源了。
 
-**请求地址 (GET):** https://api.halalplus.com/api/user-account/oauth/v1/OauthService/UserInfo
+**请求地址 (POST):** https://api.halalplus.com/api/user-account/oauth/v1/OauthService/UserInfo
 
 ### **3.1 请求方式**
 
-将 Access Token 放在 HTTP 请求的 Authorization 头中，并添加 Bearer 前缀。
+
+
+| **参数名** | **是否必须** | **描述** |
+| --- | --- | -- |
+| access_token | 是 |  |
 
 ### **3.2 请求示例 (cURL)**
 
 codeBash
 
 ```
-curl -X GET \
+curl -X POST \
   'https://api.halalplus.com/api/user-account/oauth/v1/OauthService/UserInfo' \
-  -H 'Authorization: Bearer MGU4OWFLMJATYJAWMY0ZZGYWLTG0MDCTNZG4NZM1YTVJM2U0'
+  -d '{
+  "access_token":"NJVJMJA4MMETOGM5MY0ZMJIXLTGYY2ITOWQWYZE5MWVMZWU1"
+  }'
 ```
 
 ### **3.3 成功响应**
@@ -277,7 +283,7 @@ Access Token 会在 expires_in 指定的时间后过期。过期后，您需�
 ## 5. 附录：API接口地址汇总
 
 - **[POST]** .../Token : 使用 authCode 或 refreshToken 获取令牌。
-- **[GET]** .../UserInfo : 使用 accessToken 获取授权用户信息。
+- **[POST]** .../UserInfo : 使用 accessToken 获取授权用户信息。
 - **[POST]** .../Refresh : 刷新token
 - **[POST]** .../Verify : 验证 accessToken 的有效性。
 - **[POST]** .../Revoke : 撤销用户授权的令牌。

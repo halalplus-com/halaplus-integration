@@ -23,6 +23,8 @@
     - **Client ID (客户端ID)**：应用的唯一标识，是对外公开的。
     - **Client Secret (客户端密钥)**：应用的密钥，**必须严格保密**，切勿泄露到客户端代码（如网页前端、App）中。
 
+
+
 #### 测试环境信息
 **测试应用凭证：**
 ```json
@@ -51,6 +53,8 @@ https://fat-img.halaladmin.vip/pub/halal_develop_v1.0.0.19_202509131836_release.
 ![image.png](../resource/app_image.webp)
 
 3、app自动打开网页，执行js 获取 授权码 code
+
+
 
 
 

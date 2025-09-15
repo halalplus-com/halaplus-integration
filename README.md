@@ -43,6 +43,8 @@ https://fat-img.halaladmin.vip/pub/halal_develop_v1.0.0.19_202509131836_release.
 - 账号2：test2@gmail.com / 密码：12345678
 
 
+**通过app扫码打开网页测试**
+
 
 
 ### 2. 授权流程

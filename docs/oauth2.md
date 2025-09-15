@@ -148,7 +148,7 @@ window.halal.getAuthCode({
 
 获取到 authCode 后，您的**服务器后端**需要立即向我们的令牌地址发起请求，以换取 Access Token。
 
-**请求地址 (POST):** https://fat-hapi.halaladmin.vip/api/user-account/oauth/v1/OauthService/Token
+**请求地址 (POST):** https://api.halalplus.com/api/user-account/oauth/v1/OauthService/Token
 
 **Content-Type:** application/json
 
@@ -167,7 +167,7 @@ window.halal.getAuthCode({
 
 ```bash
 curl -X POST \
-  'https://fat-hapi.halaladmin.vip/api/user-account/oauth/v1/OauthService/Token' \
+  'https://api.halalplus.com/api/user-account/oauth/v1/OauthService/Token' \
   -H 'Content-Type: application/json' \
   -d '{
     "grant_type":"authorization_code",
@@ -203,7 +203,7 @@ curl -X POST \
 
 获取 Access Token 后，您就可以调用我们受保护的API资源了。
 
-**请求地址 (GET):** https://fat-hapi.halaladmin.vip/api/user-account/oauth/v1/OauthService/UserInfo
+**请求地址 (GET):** https://api.halalplus.com/api/user-account/oauth/v1/OauthService/UserInfo
 
 ### **3.1 请求方式**
 
@@ -215,7 +215,7 @@ codeBash
 
 ```
 curl -X GET \
-  'https://fat-hapi.halaladmin.vip/api/user-account/oauth/v1/OauthService/UserInfo' \
+  'https://api.halalplus.com/api/user-account/oauth/v1/OauthService/UserInfo' \
   -H 'Authorization: Bearer MGU4OWFLMJATYJAWMY0ZZGYWLTG0MDCTNZG4NZM1YTVJM2U0'
 ```
 
@@ -247,7 +247,7 @@ codeJSON
 
 Access Token 会在 expires_in 指定的时间后过期。过期后，您需要使用 Refresh Token 来获取一个新的 Access Token，而无需再次引导用户进行授权。
 
-**请求地址 (POST):** https://fat-hapi.halaladmin.vip/api/user-account/oauth/v1/OauthService/Token
+**请求地址 (POST):** https://api.halalplus.com/api/user-account/oauth/v1/OauthService/Token
 
 **请求参数:**
 
@@ -262,13 +262,13 @@ Access Token 会在 expires_in 指定的时间后过期。过期后，您需�
 
 用于验证一个 Access Token 是否依然有效。
 
-**请求地址 (POST):** https://fat-hapi.halaladmin.vip/api/user-account/oauth/v1/OauthService/Verify
+**请求地址 (POST):** https://api.halalplus.com/api/user-account/oauth/v1/OauthService/Verify
 
 ### **4.3 撤销 Access Token**
 
 当用户在您的应用中退出登录时，建议调用此接口来使 Access Token 和 Refresh Token 失效。
 
-**请求地址 (POST):** https://fat-hapi.halaladmin.vip/api/user-account/oauth/v1/OauthService/Revoke
+**请求地址 (POST):** https://api.halalplus.com/api/user-account/oauth/v1/OauthService/Revoke
 
 ## 5. 附录：API接口地址汇总
 
@@ -278,7 +278,7 @@ Access Token 会在 expires_in 指定的时间后过期。过期后，您需�
 - **[POST]** .../Verify : 验证 accessToken 的有效性。
 - **[POST]** .../Revoke : 撤销用户授权的令牌。
 
-*（注：以上所有地址前缀为 https://fat-hapi.halaladmin.vip/api/user/account/oauth/v1/OauthService）*
+*（注：以上所有地址前缀为 https://api.halalplus.com/api/user/account/oauth/v1/OauthService）*
 
 接口文档
 

@@ -78,7 +78,7 @@ then((response) =>{
 在您的服务器端使用 authCode 换取 Access Token：
 
 ```bash
-curl -X POST 'https://api.halalplus.com/api/user-account/oauth/v1/OauthService/Token' 
+curl -X POST 'https://fat-hapi.halaladmin.vip/api/user-account/oauth/v1/OauthService/Token' 
 -H 'Content-Type: application/json' 
 -d '{ 
    "grant_type":"authorization_code", 
@@ -94,7 +94,7 @@ curl -X POST 'https://api.halalplus.com/api/user-account/oauth/v1/OauthService/T
 Access Token 会在 2 小时后过期，您可以使用 Refresh Token 获取新的访问令牌：
 
 ```bash
-curl -X POST 'https://api.halalplus.com/api/user-account/oauth/v1/OauthService/Token' 
+curl -X POST 'https://fat-hapi.halaladmin.vip/api/user-account/oauth/v1/OauthService/Token' 
 -H 'Content-Type: application/json' 
 -d '{ 
    "grant_type":"refresh_token", 
